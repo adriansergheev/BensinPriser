@@ -14,27 +14,34 @@ struct DetailView: View {
 	var stationImage: Image?
 	
 	var body: some View {
-		VStack {
+		VStack(alignment: .leading) {
+
 			MapView(coordinate: station.locationCoordinate)
 				.edgesIgnoringSafeArea(.top)
-				.frame(height: 300)
-//
-//			CircleImage(image: stationImage ?? Image(systemName: "car.fill"))
-//				.offset(x: 0, y: -130)
-//				.padding(.bottom, -130)
+				.frame(height: screenHeight / 3)
+
+			RemoteImage(imageURL: station.company.logoURL)
+				.frame(width: 100, height: 100, alignment: .center)
+				.clipShape(Circle())
+				.overlay(Circle().stroke(Color.white, lineWidth: 4))
+				.shadow(radius: 10)
+				.offset(x: 10, y: -70)
+				.padding(.bottom, -130)
 
 			VStack(alignment: .leading) {
 				HStack {
 					Text(station.stationName)
 						.font(.title)
+						.lineLimit(1)
 				}
 				HStack(alignment: .top) {
 					Text(station.company.companyName)
 						.font(.subheadline)
+						.lineLimit(1)
 				}
 				List(station.prices, id: \.price) { price in
 					HStack(alignment: .firstTextBaseline) {
-						Text("\(price.type.rawValue)")
+						Text("\(price.type.rawValue.capitalized)")
 						Spacer()
 						Text("\(String(format: "%.2f", price.price)) SEK")
 					}

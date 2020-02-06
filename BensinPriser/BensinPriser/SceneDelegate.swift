@@ -24,7 +24,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 		// Use a UIHostingController as window root view controller.
 		if let windowScene = scene as? UIWindowScene {
 			let window = UIWindow(windowScene: windowScene)
-			window.rootViewController = UIHostingController(rootView: contentView)
+			window.rootViewController = UIHostingController(rootView:
+				contentView
+					.environmentObject(UserData())
+			)
+
 			self.window = window
 			window.makeKeyAndVisible()
 		}
@@ -42,7 +46,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 		// Called when the scene has moved from an inactive state to an active state.
 		// Use this method to restart any tasks that were paused (or not yet started) when the scene was inactive.
 	}
-
+	
 	func sceneWillResignActive(_ scene: UIScene) {
 		// Called when the scene will move from an active state to an inactive state.
 		// This may occur due to temporary interruptions (ex. an incoming phone call).

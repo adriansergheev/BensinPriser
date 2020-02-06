@@ -35,7 +35,7 @@ extension BStation {
 	}
 }
 
-enum BFuleType: String, Codable {
+enum BFuelType: String, Codable, CaseIterable {
 	case diesel
 	case bensin98
 	case bensin95
@@ -44,7 +44,7 @@ enum BFuleType: String, Codable {
 }
 
 struct BFuel: Codable {
-	let type: BFuleType
+	let type: BFuelType
 	let price: Double
 }
 

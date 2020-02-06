@@ -7,7 +7,8 @@ target 'BensinPriser' do
 
   # Pods for BensinPriser
   pod 'SwiftLint'
-  
+  pod 'Nuke'
+
   target 'BensinPriserTests' do
     inherit! :search_paths
     # Pods for testing

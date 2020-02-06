@@ -3,19 +3,21 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		04577F3F23E4628A00040507 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04577F3E23E4628A00040507 /* SettingsView.swift */; };
 		04577F4223E463E800040507 /* BTabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04577F4123E463E800040507 /* BTabBarView.swift */; };
 		04577F4523E49DC700040507 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04577F4423E49DC700040507 /* AppSettings.swift */; };
+		04661D3623EC566100A71C4D /* UIScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04661D3523EC566100A71C4D /* UIScreen.swift */; };
 		046E26D923EAF1BE00098455 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046E26D823EAF1BE00098455 /* DetailView.swift */; };
 		046E26DC23EAF44A00098455 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046E26DB23EAF44A00098455 /* MapView.swift */; };
-		046E26DE23EAF65800098455 /* CircleImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046E26DD23EAF65800098455 /* CircleImage.swift */; };
+		046E26DE23EAF65800098455 /* RemoteImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046E26DD23EAF65800098455 /* RemoteImage.swift */; };
 		04999EE823E9F3FA0089B177 /* BaseURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04999EE723E9F3FA0089B177 /* BaseURL.swift */; };
 		04999EEA23E9F44A0089B177 /* Bapi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04999EE923E9F44A0089B177 /* Bapi.swift */; };
 		04999EEC23EA00870089B177 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04999EEB23EA00870089B177 /* MainViewModel.swift */; };
+		04A4C01523EC6AA900D535DB /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A4C01423EC6AA900D535DB /* UserData.swift */; };
 		04C7C2D223E42A7F00160408 /* BData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C7C2D123E42A7F00160408 /* BData.swift */; };
 		04CA5CD323E41E9800BF9E22 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CA5CD223E41E9800BF9E22 /* AppDelegate.swift */; };
 		04CA5CD523E41E9800BF9E22 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CA5CD423E41E9800BF9E22 /* SceneDelegate.swift */; };
@@ -52,12 +54,14 @@
 		04577F3E23E4628A00040507 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		04577F4123E463E800040507 /* BTabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTabBarView.swift; sourceTree = "<group>"; };
 		04577F4423E49DC700040507 /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
+		04661D3523EC566100A71C4D /* UIScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScreen.swift; sourceTree = "<group>"; };
 		046E26D823EAF1BE00098455 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		046E26DB23EAF44A00098455 /* MapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
-		046E26DD23EAF65800098455 /* CircleImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleImage.swift; sourceTree = "<group>"; };
+		046E26DD23EAF65800098455 /* RemoteImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteImage.swift; sourceTree = "<group>"; };
 		04999EE723E9F3FA0089B177 /* BaseURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseURL.swift; sourceTree = "<group>"; };
 		04999EE923E9F44A0089B177 /* Bapi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bapi.swift; sourceTree = "<group>"; };
 		04999EEB23EA00870089B177 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		04A4C01423EC6AA900D535DB /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		04C7C2D123E42A7F00160408 /* BData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BData.swift; sourceTree = "<group>"; };
 		04CA5CCF23E41E9800BF9E22 /* BensinPriser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BensinPriser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04CA5CD223E41E9800BF9E22 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -122,6 +126,14 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		04661D3423EC555100A71C4D /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				04661D3523EC566100A71C4D /* UIScreen.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		046E26D623EAF1A200098455 /* Main */ = {
 			isa = PBXGroup;
 			children = (
@@ -144,7 +156,7 @@
 		046E26DA23EAF44000098455 /* SupportingViews */ = {
 			isa = PBXGroup;
 			children = (
-				046E26DD23EAF65800098455 /* CircleImage.swift */,
+				046E26DD23EAF65800098455 /* RemoteImage.swift */,
 				046E26DB23EAF44A00098455 /* MapView.swift */,
 			);
 			path = SupportingViews;
@@ -163,6 +175,7 @@
 			isa = PBXGroup;
 			children = (
 				04C7C2D123E42A7F00160408 /* BData.swift */,
+				04A4C01423EC6AA900D535DB /* UserData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -198,9 +211,10 @@
 				04577F4423E49DC700040507 /* AppSettings.swift */,
 				04CA5CD423E41E9800BF9E22 /* SceneDelegate.swift */,
 				04CA5CD823E41E9B00BF9E22 /* Assets.xcassets */,
-				04999EE623E9E8890089B177 /* Network */,
+				04661D3423EC555100A71C4D /* Extensions */,
 				04CA5CDD23E41E9B00BF9E22 /* LaunchScreen.storyboard */,
 				04C7C2D023E42A3800160408 /* Model */,
+				04999EE623E9E8890089B177 /* Network */,
 				04CA5CDA23E41E9B00BF9E22 /* Preview Content */,
 				04577F3D23E4626000040507 /* View */,
 			);
@@ -268,6 +282,7 @@
 				04CA5CCB23E41E9800BF9E22 /* Sources */,
 				04CA5CCC23E41E9800BF9E22 /* Frameworks */,
 				04CA5CCD23E41E9800BF9E22 /* Resources */,
+				9BC892F172ACED169CD55836 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -305,6 +320,7 @@
 				04CA5CEC23E41E9C00BF9E22 /* Sources */,
 				04CA5CED23E41E9C00BF9E22 /* Frameworks */,
 				04CA5CEE23E41E9C00BF9E22 /* Resources */,
+				AF0F570F2A72A1D6BBCDC7EB /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -448,6 +464,40 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		9BC892F172ACED169CD55836 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BensinPriser/Pods-BensinPriser-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BensinPriser/Pods-BensinPriser-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BensinPriser/Pods-BensinPriser-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AF0F570F2A72A1D6BBCDC7EB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BensinPriser-BensinPriserUITests/Pods-BensinPriser-BensinPriserUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BensinPriser-BensinPriserUITests/Pods-BensinPriser-BensinPriserUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BensinPriser-BensinPriserUITests/Pods-BensinPriser-BensinPriserUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		BF53E5807FB4EF7753347E45 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -480,8 +530,10 @@
 				04577F3F23E4628A00040507 /* SettingsView.swift in Sources */,
 				046E26DC23EAF44A00098455 /* MapView.swift in Sources */,
 				04CA5CD323E41E9800BF9E22 /* AppDelegate.swift in Sources */,
-				046E26DE23EAF65800098455 /* CircleImage.swift in Sources */,
+				04A4C01523EC6AA900D535DB /* UserData.swift in Sources */,
+				046E26DE23EAF65800098455 /* RemoteImage.swift in Sources */,
 				04577F4523E49DC700040507 /* AppSettings.swift in Sources */,
+				04661D3623EC566100A71C4D /* UIScreen.swift in Sources */,
 				04CA5CD523E41E9800BF9E22 /* SceneDelegate.swift in Sources */,
 				04C7C2D223E42A7F00160408 /* BData.swift in Sources */,
 				046E26D923EAF1BE00098455 /* DetailView.swift in Sources */,
