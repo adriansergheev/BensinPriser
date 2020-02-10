@@ -12,7 +12,7 @@ struct BTabBarView: View {
 
 	var body: some View {
 		TabView {
-			MainView(viewModel: MainViewModel())
+			MainView(viewModel: MainViewModel(userData: UserData()))
 				.tabItem {
 					Image(systemName: "flame.fill")
 					Text("Prices")

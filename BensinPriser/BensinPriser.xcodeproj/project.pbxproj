@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0417408A23F1910800906AE8 /* MutableCollection+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0417408923F1910800906AE8 /* MutableCollection+Extensions.swift */; };
+		0417408C23F1911D00906AE8 /* CLLocation+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0417408B23F1911D00906AE8 /* CLLocation+Extensions.swift */; };
 		04577F3F23E4628A00040507 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04577F3E23E4628A00040507 /* SettingsView.swift */; };
 		04577F4223E463E800040507 /* BTabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04577F4123E463E800040507 /* BTabBarView.swift */; };
 		04577F4523E49DC700040507 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04577F4423E49DC700040507 /* AppSettings.swift */; };
@@ -50,6 +52,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0417408923F1910800906AE8 /* MutableCollection+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MutableCollection+Extensions.swift"; sourceTree = "<group>"; };
+		0417408B23F1911D00906AE8 /* CLLocation+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CLLocation+Extensions.swift"; sourceTree = "<group>"; };
 		04577F3A23E42BAD00040507 /* BensinPriser copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "BensinPriser copy-Info.plist"; path = "/Users/sergheev/Desktop/University/Courses/DA224AMobileDevelopment/Project/App/iOS/BensinPriser/BensinPriser copy-Info.plist"; sourceTree = "<absolute>"; };
 		04577F3E23E4628A00040507 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		04577F4123E463E800040507 /* BTabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTabBarView.swift; sourceTree = "<group>"; };
@@ -130,6 +134,8 @@
 			isa = PBXGroup;
 			children = (
 				04661D3523EC566100A71C4D /* UIScreen.swift */,
+				0417408923F1910800906AE8 /* MutableCollection+Extensions.swift */,
+				0417408B23F1911D00906AE8 /* CLLocation+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -533,6 +539,8 @@
 				04A4C01523EC6AA900D535DB /* UserData.swift in Sources */,
 				046E26DE23EAF65800098455 /* RemoteImage.swift in Sources */,
 				04577F4523E49DC700040507 /* AppSettings.swift in Sources */,
+				0417408C23F1911D00906AE8 /* CLLocation+Extensions.swift in Sources */,
+				0417408A23F1910800906AE8 /* MutableCollection+Extensions.swift in Sources */,
 				04661D3623EC566100A71C4D /* UIScreen.swift in Sources */,
 				04CA5CD523E41E9800BF9E22 /* SceneDelegate.swift in Sources */,
 				04C7C2D223E42A7F00160408 /* BData.swift in Sources */,

@@ -25,6 +25,11 @@ struct BStation: Codable {
 	let longitude: Double?
 
 	let prices: [BFuel]
+
+	var distanceFromInMeters: Double?
+	var distanceFromInKilometers: Int? {
+		return Int(distanceFromInMeters ?? 0) / 1000
+	}
 }
 
 extension BStation {
@@ -48,6 +53,37 @@ struct BFuel: Codable {
 	let price: Double
 }
 
+enum BPriserSorting {
+	case fuel(BFuelType)
+	case distance
+}
+
+extension BPriserSorting: Equatable { }
+
+extension BPriserSorting: CaseIterable {
+	static var allCases: [BPriserSorting] {
+		return [
+			.distance,
+			.fuel(.bensin95),
+			.fuel(.bensin98),
+			.fuel(.diesel),
+			.fuel(.ethanol85),
+			.fuel(.gas)
+		]
+	}
+}
+
+extension BPriserSorting: CustomStringConvertible {
+	var description: String {
+		switch self {
+		case .fuel(let type):
+			return type.rawValue
+		case .distance:
+			return "Distance"
+		}
+	}
+}
+
 public struct BData: Codable {
 
 	var stations: [BStation] = []
@@ -65,7 +101,6 @@ public struct BData: Codable {
 				latitude: 30.3 + Double($0),
 				longitude: 88.5 + Double($0),
 				prices:
-				//				(0...1).map { BFuel(type: .b95, price: 15 + Double($0))}
 				[
 					BFuel(type: .bensin98, price: 20.1),
 					BFuel(type: .bensin95, price: 18.2),

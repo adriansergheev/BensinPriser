@@ -7,39 +7,42 @@
 //
 
 import Foundation
+import Combine
+import CoreLocation
 
-enum BPriserSorting {
-	case fuel(BFuelType)
-	case distance
-}
+final class UserData: NSObject, ObservableObject {
 
-extension BPriserSorting: Equatable { }
+	// settings
+	var sortingBy: CurrentValueSubject<BPriserSorting, Never> = CurrentValueSubject(.fuel(.bensin95))
 
-extension BPriserSorting: CaseIterable {
-	static var allCases: [BPriserSorting] {
-		return [
-			.distance,
-			.fuel(.bensin95),
-			.fuel(.bensin98),
-			.fuel(.diesel),
-			.fuel(.ethanol85),
-			.fuel(.gas)
-		]
+	// location
+	var location2d = PassthroughSubject<CLLocationCoordinate2D?, Never>()
+
+	private let locationManager = CLLocationManager()
+
+	override init() {
+		super.init()
+		locationManager.delegate = self
+		locationManager.desiredAccuracy = kCLLocationAccuracyKilometer
+		locationManager.requestWhenInUseAuthorization()
+		locationManager.startUpdatingLocation()
 	}
 }
 
-extension BPriserSorting: CustomStringConvertible {
-	var description: String {
-		switch self {
-		case .fuel(let type):
-			return type.rawValue
-		case .distance:
-			return "Distance"
-		}
-	}
-}
+extension UserData: CLLocationManagerDelegate {
 
-final class UserData: ObservableObject {
-	@Published
-	var sortingBy: BPriserSorting = .fuel(.bensin95)
+	func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+		location2d.send(locations.first?.coordinate)
+
+		#if DEBUG
+//		print("🎁 Location: \(locations)")
+		#endif
+	}
+
+	func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+		#if DEBUG
+		print("Error while updating location " + error.localizedDescription)
+		#endif
+	}
+
 }

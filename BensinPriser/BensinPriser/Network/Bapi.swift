@@ -20,7 +20,6 @@ enum BensinPriserAPI {
 		return URLSession
 			.shared
 			.dataTaskPublisher(for: url)
-			.print()
 			.map(\.data)
 			.decode(type: [BStation].self, decoder: JSONDecoder())
 			.eraseToAnyPublisher()
