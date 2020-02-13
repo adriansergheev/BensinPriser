@@ -24,11 +24,16 @@ struct BStation: Codable {
 	let latitude: Double?
 	let longitude: Double?
 
-	let prices: [BFuel]
+	var prices: [BFuel]
 
 	var distanceFromInMeters: Double?
+
 	var distanceFromInKilometers: Int? {
-		return Int(distanceFromInMeters ?? 0) / 1000
+		if let meters = distanceFromInMeters {
+			return Int(meters) / 1000
+		} else {
+			return nil
+		}
 	}
 }
 
@@ -50,7 +55,7 @@ enum BFuelType: String, Codable, CaseIterable {
 
 struct BFuel: Codable {
 	let type: BFuelType
-	let price: Double
+	let price: Double?
 }
 
 enum BPriserSorting {
@@ -95,29 +100,35 @@ public struct BData: Codable {
 								companyURL: "")
 
 		let bData = (0...15)
-			.map { BStation(stationID: $0,
-							company: bCompany,
-							stationName: names.randomElement() ?? "\($0)",
-				latitude: 30.3 + Double($0),
-				longitude: 88.5 + Double($0),
-				prices:
-				[
-					BFuel(type: .bensin98, price: 20.1),
-					BFuel(type: .bensin95, price: 18.2),
-					BFuel(type: .diesel, price: 14.2),
-					BFuel(type: .gas, price: 13),
-					BFuel(type: .ethanol85, price: 15.3)
-				]
+			.map {
+				BStation(stationID: $0,
+						 company: bCompany,
+						 stationName: names.randomElement() ?? "\($0)",
+					latitude: 30.3 + Double($0),
+					longitude: 88.5 + Double($0),
+					prices: [
+						BFuel(type: .bensin98, price: randomPrice()),
+						BFuel(type: .bensin95, price: randomPrice()),
+						BFuel(type: .diesel, price: randomPrice()),
+						BFuel(type: .gas, price: randomPrice()),
+						BFuel(type: .ethanol85, price: randomPrice()) ]
 				)}
 		defer {
 			let jsonEncoder = JSONEncoder()
+			// swiftlint:disable force_try
 			let jsonData = try! jsonEncoder.encode(bData)
 			let json = String(data: jsonData, encoding: String.Encoding.utf8)
-
+			// swiftlint:enable force_try
+			#if DEBUG
 			print(json!)
+			#endif
 		}
 		return bData
 	}
+}
+
+fileprivate func randomPrice() -> Double {
+	return Double.random(in: 15.1...25.1)
 }
 
 fileprivate var names: [String] = [

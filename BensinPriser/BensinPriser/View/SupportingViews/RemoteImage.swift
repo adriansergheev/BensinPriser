@@ -16,7 +16,6 @@ struct RemoteImage: View {
 
 	var body: some View {
 		ZStack {
-			//TODO: Add mock logo in case of no internet connection
 			uiImage.map { uiImage in
 				Image(uiImage: uiImage)
 					.resizable()
@@ -26,12 +25,17 @@ struct RemoteImage: View {
 			if let stringURL = self.imageURL, let imageURL = URL(string: stringURL) {
 				ImagePipeline.shared.loadImage(with: imageURL) { result in
 					switch result {
-					case .success(let response): self.uiImage = response.image
-					case .failure(let error): print(error)
+					case .success(let response):
+						self.uiImage = response.image
+					case .failure(let error):
+						#if DEBUG
+						print("Error loading image: \(error)")
+						#endif
+						self.uiImage = UIImage(systemName: "xmark.octagon")
 					}
 				}
 			} else {
-				self.uiImage = UIImage(systemName: "car.fill")
+				self.uiImage = UIImage(systemName: "xmark.octagon")
 			}
 		}
 	}

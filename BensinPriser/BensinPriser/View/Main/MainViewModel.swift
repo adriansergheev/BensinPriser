@@ -16,6 +16,9 @@ final class MainViewModel: ObservableObject {
 	var stations: [BStation] = []
 
 	@Published
+	var error: BensinPriserAPI.Error?
+
+	@Published
 	var userData: UserData
 
 	private var subscriptions = Set<AnyCancellable>()
@@ -25,7 +28,7 @@ final class MainViewModel: ObservableObject {
 		self.userData = userData
 
 		let throttledLocation = userData.location2d
-			.throttle(for: .seconds(10), scheduler: DispatchQueue.main, latest: true)
+			.throttle(for: .seconds(10), scheduler: DispatchQueue.global(qos: .default), latest: true)
 			.prepend(nil)
 
 		let sortingBy = userData
@@ -34,14 +37,24 @@ final class MainViewModel: ObservableObject {
 
 		BensinPriserAPI
 			.getItems()
-			.receive(on: DispatchQueue.main)
-			.retry(3)
-			.replaceError(with: [])
+			.handleEvents( // side effect
+				receiveCompletion: { event in
+					switch event {
+					case .failure(let error):
+						DispatchQueue.main.async {
+							self.error = error
+						}
+					default: break
+					}
+			}
+		)
+			.replaceError(with: BData.mockStations) // fall to generated data
 			.combineLatest(throttledLocation)
 			.map(calculateDistance)
-			.replaceNil(with: [])
 			.combineLatest(sortingBy)
-			.map(sortStations)
+			.map(sortFilter)
+			//			.print("🎈", to: TimeLogger())
+			.receive(on: DispatchQueue.main)
 			.assign(to: \.stations, on: self)
 			.store(in: &subscriptions)
 	}
@@ -60,21 +73,28 @@ fileprivate func calculateDistance(stations: [BStation], location: CLLocationCoo
 	return localStations
 }
 
-fileprivate func sortStations(stations: [BStation], sorting by: BPriserSorting) -> [BStation] {
+fileprivate func sortFilter(stations: [BStation], sorting by: BPriserSorting) -> [BStation] {
+
 	switch by {
 	case .fuel(let type):
-		return stations.sorted { st1, st2 in
 
+		var stationsCopy = stations
+
+		//n^2, but ok for current data size
+
+		stationsCopy.removeAll { stations in
+			stations.prices.contains { price in
+				price.price == nil && price.type == type
+			}
+		}
+
+		return stationsCopy.sorted { st1, st2 in
 			if let price1 = st1.prices.first(where: {$0.type == type})?.price,
 				let price2 = st2.prices.first(where: {$0.type == type})?.price {
 				return price1 < price2
 			} else {
-				#if DEBUG
-				fatalError()
-				#endif
 				return false
 			}
-
 		}
 	case .distance:
 		return stations.sorted {

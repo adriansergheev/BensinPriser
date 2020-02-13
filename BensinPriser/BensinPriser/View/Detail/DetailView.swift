@@ -11,12 +11,12 @@ import SwiftUI
 struct DetailView: View {
 	
 	var station: BStation
-	var stationImage: Image?
 	
 	var body: some View {
 		VStack(alignment: .leading) {
 
-			MapView(coordinate: station.locationCoordinate)
+			MapView(placemarkName: station.stationName,
+					coordinate: station.locationCoordinate)
 				.edgesIgnoringSafeArea(.top)
 				.frame(height: screenHeight / 3)
 
@@ -39,11 +39,13 @@ struct DetailView: View {
 						.font(.subheadline)
 						.lineLimit(1)
 				}
-				List(station.prices, id: \.price) { price in
+				List(station.prices, id: \.price) { stationPrice in
 					HStack(alignment: .firstTextBaseline) {
-						Text("\(price.type.rawValue.capitalized)")
-						Spacer()
-						Text("\(String(format: "%.2f", price.price)) SEK")
+						if stationPrice.price != nil {
+							Text("\(stationPrice.type.rawValue.capitalized)")
+							Spacer()
+							Text("\(String(format: "%.2f", stationPrice.price!)) SEK")
+						}
 					}
 				}
 			}
@@ -56,6 +58,6 @@ struct DetailView: View {
 
 struct DetailView_Previews: PreviewProvider {
 	static var previews: some View {
-		DetailView(station: BData.mockStations[0], stationImage: nil)
+		DetailView(station: BData.mockStations[0])
 	}
 }

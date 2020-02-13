@@ -38,7 +38,7 @@ struct MainView: View {
 		NavigationView {
 			VStack {
 				List(viewModel.stations, id: \.stationID) { station in
-					NavigationLink(destination: DetailView(station: station, stationImage: nil)) {
+					NavigationLink(destination: DetailView(station: station)) {
 
 						HStack {
 							RemoteImage(imageURL: station.company.logoURL)
@@ -52,17 +52,16 @@ struct MainView: View {
 
 							VStack(alignment: .leading) {
 								if !(self.viewModel.userData.sortingBy.value == .distance) {
-									Text("Price: \(String(format: "%.2f", doubleInCell(sorting: self.viewModel.userData.sortingBy.value, station: station) ?? 0)) SEK")
+									if doubleInCell(sorting: self.viewModel.userData.sortingBy.value, station: station) != nil {
+										Text("Price: \(String(format: "%.2f", doubleInCell(sorting: self.viewModel.userData.sortingBy.value, station: station)!)) SEK")
+									}
 								}
 
-								if station.distanceFromInKilometers ?? 50 >= 50 {
-
-									Text("Distance: \(station.distanceFromInKilometers ?? 0) km")
-										.foregroundColor(.red)
-								} else {
-									Text("Distance: \(station.distanceFromInKilometers ?? 0) km")
-										.foregroundColor(.green)
-								}
+								Text("Distance: \(station.distanceFromInKilometers ?? 0) km")
+									.foregroundColor(
+										((station.distanceFromInKilometers ?? 50) >= 50) ? .red : .green
+								)
+									.minimumScaleFactor(0.7)
 
 							}
 							.frame(width: screenWidth / 3, alignment: .leading)
@@ -77,6 +76,13 @@ struct MainView: View {
 			)
 				.navigationBarItems(trailing: filterButton)
 		}
+		.alert(item: self.$viewModel.error) { error in
+			Alert(
+				title: Text("Network error, using generated data"),
+				message: Text(error.localizedDescription),
+				dismissButton: .cancel()
+			)
+		}
 	}
 }
 
@@ -86,7 +92,7 @@ struct ContentView_Previews: PreviewProvider {
 	}
 }
 
-/// probably should be cached and implemented in a faster way, though ok for the current data size.
+/// should be cached and implemented in a faster way, though ok for the current data size.
 fileprivate func doubleInCell(sorting by: BPriserSorting, station: BStation) -> Double? {
 	switch by {
 	case .distance:
@@ -96,6 +102,6 @@ fileprivate func doubleInCell(sorting by: BPriserSorting, station: BStation) -> 
 			.prices
 			.filter { $0.type == type }
 			.map { $0.price }
-			.first
+			.first ?? nil
 	}
 }

@@ -10,10 +10,12 @@ import MapKit
 
 final class MapViewUIKit: MKMapView {
 
+	var placemarkName: String
 	private var coordinate: CLLocationCoordinate2D
 
-	init(frame: CGRect, coordinate: CLLocationCoordinate2D) {
+	init(frame: CGRect, coordinate: CLLocationCoordinate2D, placemarkName: String) {
 		self.coordinate = coordinate
+		self.placemarkName = placemarkName
 		super.init(frame: frame)
 		delegate = self
 	}
@@ -30,8 +32,7 @@ extension MapViewUIKit: MKMapViewDelegate {
 		let mapItem = MKMapItem(placemark: MKPlacemark(coordinate: coordinate,
 													   addressDictionary: nil))
 
-		//TODO: Inject place's name
-		//mapItem.name = ""
+		mapItem.name = placemarkName
 		mapItem.openInMaps(launchOptions:
 			[MKLaunchOptionsDirectionsModeKey:
 				MKLaunchOptionsDirectionsModeDriving])
@@ -40,10 +41,12 @@ extension MapViewUIKit: MKMapViewDelegate {
 }
 
 struct MapView: UIViewRepresentable {
+
+	var placemarkName: String
 	var coordinate: CLLocationCoordinate2D
 
 	func makeUIView(context: Context) -> MKMapView {
-		MapViewUIKit(frame: .zero, coordinate: coordinate)
+		MapViewUIKit(frame: .zero, coordinate: coordinate, placemarkName: placemarkName)
 	}
 
 	func updateUIView(_ view: MKMapView, context: Context) {
@@ -61,6 +64,6 @@ struct MapView: UIViewRepresentable {
 
 struct MapView_Previews: PreviewProvider {
 	static var previews: some View {
-		MapView(coordinate: BData.mockStations[0].locationCoordinate)
+		MapView(placemarkName: "Test", coordinate: BData.mockStations[0].locationCoordinate)
 	}
 }

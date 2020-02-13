@@ -10,7 +10,6 @@ import Foundation
 import CoreLocation
 
 extension CLLocation {
-
 	/// Get distance between two points
 	///
 	/// - Parameters:

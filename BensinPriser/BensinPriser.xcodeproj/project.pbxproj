@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0417408A23F1910800906AE8 /* MutableCollection+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0417408923F1910800906AE8 /* MutableCollection+Extensions.swift */; };
 		0417408C23F1911D00906AE8 /* CLLocation+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0417408B23F1911D00906AE8 /* CLLocation+Extensions.swift */; };
+		0441580E23F3E33500EC63CA /* TimeLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0441580D23F3E33500EC63CA /* TimeLogger.swift */; };
 		04577F3F23E4628A00040507 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04577F3E23E4628A00040507 /* SettingsView.swift */; };
 		04577F4223E463E800040507 /* BTabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04577F4123E463E800040507 /* BTabBarView.swift */; };
 		04577F4523E49DC700040507 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04577F4423E49DC700040507 /* AppSettings.swift */; };
@@ -54,7 +55,7 @@
 /* Begin PBXFileReference section */
 		0417408923F1910800906AE8 /* MutableCollection+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MutableCollection+Extensions.swift"; sourceTree = "<group>"; };
 		0417408B23F1911D00906AE8 /* CLLocation+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CLLocation+Extensions.swift"; sourceTree = "<group>"; };
-		04577F3A23E42BAD00040507 /* BensinPriser copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "BensinPriser copy-Info.plist"; path = "/Users/sergheev/Desktop/University/Courses/DA224AMobileDevelopment/Project/App/iOS/BensinPriser/BensinPriser copy-Info.plist"; sourceTree = "<absolute>"; };
+		0441580D23F3E33500EC63CA /* TimeLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeLogger.swift; sourceTree = "<group>"; };
 		04577F3E23E4628A00040507 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		04577F4123E463E800040507 /* BTabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTabBarView.swift; sourceTree = "<group>"; };
 		04577F4423E49DC700040507 /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
@@ -120,6 +121,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0441580C23F3E31A00EC63CA /* TimeLogger */ = {
+			isa = PBXGroup;
+			children = (
+				0441580D23F3E33500EC63CA /* TimeLogger.swift */,
+			);
+			path = TimeLogger;
+			sourceTree = "<group>";
+		};
 		04577F3D23E4626000040507 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -133,6 +142,7 @@
 		04661D3423EC555100A71C4D /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				0441580C23F3E31A00EC63CA /* TimeLogger */,
 				04661D3523EC566100A71C4D /* UIScreen.swift */,
 				0417408923F1910800906AE8 /* MutableCollection+Extensions.swift */,
 				0417408B23F1911D00906AE8 /* CLLocation+Extensions.swift */,
@@ -192,10 +202,9 @@
 				04CA5CD123E41E9800BF9E22 /* BensinPriser */,
 				04CA5CE823E41E9C00BF9E22 /* BensinPriserTests */,
 				04CA5CF323E41E9C00BF9E22 /* BensinPriserUITests */,
-				04CA5CD023E41E9800BF9E22 /* Products */,
-				F8F12CE3B7E7E13E4A980E9E /* Pods */,
 				8BB3182322408F9BF8D6597C /* Frameworks */,
-				04577F3A23E42BAD00040507 /* BensinPriser copy-Info.plist */,
+				F8F12CE3B7E7E13E4A980E9E /* Pods */,
+				04CA5CD023E41E9800BF9E22 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
@@ -547,6 +556,7 @@
 				046E26D923EAF1BE00098455 /* DetailView.swift in Sources */,
 				04999EEC23EA00870089B177 /* MainViewModel.swift in Sources */,
 				04CA5CD723E41E9800BF9E22 /* MainView.swift in Sources */,
+				0441580E23F3E33500EC63CA /* TimeLogger.swift in Sources */,
 				04999EEA23E9F44A0089B177 /* Bapi.swift in Sources */,
 				04999EE823E9F3FA0089B177 /* BaseURL.swift in Sources */,
 				04577F4223E463E800040507 /* BTabBarView.swift in Sources */,
