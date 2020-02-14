@@ -49,11 +49,11 @@ final class MainViewModel: ObservableObject {
 			}
 		)
 			.replaceError(with: BData.mockStations) // fall to generated data
-			.combineLatest(throttledLocation)
-			.map(calculateDistance)
 			.combineLatest(sortingBy)
 			.map(sortFilter)
 			//			.print("🎈", to: TimeLogger())
+			.combineLatest(throttledLocation)
+			.map(calculateDistance)
 			.receive(on: DispatchQueue.main)
 			.assign(to: \.stations, on: self)
 			.store(in: &subscriptions)

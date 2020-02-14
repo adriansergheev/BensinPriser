@@ -31,11 +31,11 @@ struct RemoteImage: View {
 						#if DEBUG
 						print("Error loading image: \(error)")
 						#endif
-						self.uiImage = UIImage(systemName: "xmark.octagon")
+						self.uiImage = UIImage(named: "defaultLogo")
 					}
 				}
 			} else {
-				self.uiImage = UIImage(systemName: "xmark.octagon")
+				self.uiImage =  UIImage(named: "defaultLogo")
 			}
 		}
 	}

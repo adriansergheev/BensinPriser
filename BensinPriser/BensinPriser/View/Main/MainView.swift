@@ -51,6 +51,7 @@ struct MainView: View {
 							Divider()
 
 							VStack(alignment: .leading) {
+								//should be prettier ;(
 								if !(self.viewModel.userData.sortingBy.value == .distance) {
 									if doubleInCell(sorting: self.viewModel.userData.sortingBy.value, station: station) != nil {
 										Text("Price: \(String(format: "%.2f", doubleInCell(sorting: self.viewModel.userData.sortingBy.value, station: station)!)) SEK")
